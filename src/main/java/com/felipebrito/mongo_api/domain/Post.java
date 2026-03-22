@@ -1,13 +1,13 @@
 package com.felipebrito.mongo_api.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.felipebrito.mongo_api.dto.AuthorDTO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
-import java.time.LocalDate;
 import java.util.Objects;
 
 @Document
@@ -23,12 +23,12 @@ public class Post implements Serializable {
     private String title;
     private String body;
 
-    private User author;
+    private AuthorDTO author;
 
     public Post() {
     }
 
-    public Post(String id, Instant date, String title, String body, User author) {
+    public Post(String id, Instant date, String title, String body, AuthorDTO author) {
         super();
         this.id = id;
         this.date = date;
@@ -68,11 +68,11 @@ public class Post implements Serializable {
     public void setTitle(String title) {
         this.title = title;
     }
-    public User getAuthor() {
+    public AuthorDTO getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public void setAuthor(AuthorDTO author) {
         this.author = author;
     }
 
