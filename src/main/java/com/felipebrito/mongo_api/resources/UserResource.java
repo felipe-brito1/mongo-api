@@ -1,5 +1,6 @@
 package com.felipebrito.mongo_api.resources;
 
+import com.felipebrito.mongo_api.domain.Post;
 import com.felipebrito.mongo_api.domain.User;
 import com.felipebrito.mongo_api.dto.UserDTO;
 import com.felipebrito.mongo_api.services.UserService;
@@ -50,5 +51,10 @@ public class UserResource {
         obj.setId(id);
         obj = service.update(obj);
         return ResponseEntity.noContent().build();
+    }
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
+        User obj = service.findById(id);
+        return ResponseEntity.ok().body(obj.getPosts()  );
     }
 }
